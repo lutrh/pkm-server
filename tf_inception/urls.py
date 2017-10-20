@@ -19,7 +19,7 @@ from django.views.generic import RedirectView
 # from django.contrib import admin
 
 urlpatterns = [
-    url(r'^api$', classify_api),
+    url(r'^api/$', classify_api),
     url(r'^$', classify)
     # url(r'^admin/', admin.site.urls),
 ]
