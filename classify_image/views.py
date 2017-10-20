@@ -54,7 +54,8 @@ def classify_api(request):
         if classify_result:
             data.update({"success": True})
             for res in classify_result:
-                data[res[0]] = '{:f}'.format(res[1])
+                data["hama"] = res[0]
+                data["akurasi"] = '{:f}'.format(res[1])
 
     return JsonResponse(data)
 
