@@ -11,9 +11,9 @@ from django.shortcuts import render
 
 MAX_K = 10
 
-TF_GRAPH = "{base_path}/inception_model/graph.pb".format(
+TF_GRAPH = "{base_path}/inception_model/retrained_graph.pb".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
-TF_LABELS = "{base_path}/inception_model/labels.txt".format(
+TF_LABELS = "{base_path}/inception_model/retrained_labels.txt".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
 
 
@@ -24,7 +24,7 @@ def load_graph():
         graph_def.ParseFromString(tf_graph.read())
         _ = tf.import_graph_def(graph_def, name='')
     label_lines = [line.rstrip() for line in tf.gfile.GFile(TF_LABELS)]
-    softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
+    softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
     return sess, softmax_tensor, label_lines
 
 
