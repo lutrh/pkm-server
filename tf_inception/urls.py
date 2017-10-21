@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from classify_image.views import classify, classify_api
+from classify_image.dictionary import dictionary_api
 from django.views.generic import RedirectView
 # from django.contrib import admin
 
 urlpatterns = [
     url(r'^api/$', classify_api),
+    url(r'^dictionary/$', dictionary_api),
     url(r'^$', classify)
     # url(r'^admin/', admin.site.urls),
 ]
